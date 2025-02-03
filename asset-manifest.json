@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/Barkives/static/css/main.f855e6bc.css",
+    "main.js": "/Barkives/static/js/main.dc7b5ded.js",
+    "static/js/488.11b7d07f.chunk.js": "/Barkives/static/js/488.11b7d07f.chunk.js",
+    "static/media/logo.svg": "/Barkives/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/Barkives/index.html",
+    "main.f855e6bc.css.map": "/Barkives/static/css/main.f855e6bc.css.map",
+    "main.dc7b5ded.js.map": "/Barkives/static/js/main.dc7b5ded.js.map",
+    "488.11b7d07f.chunk.js.map": "/Barkives/static/js/488.11b7d07f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f855e6bc.css",
+    "static/js/main.dc7b5ded.js"
+  ]
+}
