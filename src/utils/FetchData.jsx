@@ -9,6 +9,7 @@ const FetchData = () => {
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [favorites, setFavorites] = useState(new Set());
 
   //extract queries
   const breeds = searchParams.getAll('breeds');
@@ -83,6 +84,27 @@ const FetchData = () => {
     setSearchParams(searchParams);
   };
 
+  //toggle favorite dogs
+  const toggleFavorite = (id) => {
+    setFavorites((prev) => {
+      const newFavorites = new Set(prev);
+      newFavorites.has(id) ? newFavorites.delete(id) : newFavorites.add(id);
+      return newFavorites;
+    });
+  };
+
+  //generate a dog match from favorites
+  const fetchMatch = async (favoriteIds) => {
+    const res = await fetch('https://frontend-take-home-service.fetch.com/dogs/match', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify(favoriteIds),
+    });
+    const data = await res.json();
+    return data.match;
+  };
+
   //change search filters and update URL params
   const updateFilters = (filters) => {
     const newParams = new URLSearchParams();
@@ -103,8 +125,11 @@ const FetchData = () => {
     currentPage: Number(currentPage),
     totalPages: Math.ceil(total / 25),
     sortField,
+    favorites,
     goToPage,
     handleSortChange,
+    toggleFavorite,
+    fetchMatch,
     updateFilters,
   };
 };
