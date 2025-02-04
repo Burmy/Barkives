@@ -17,24 +17,22 @@ const AuthProvider = ({ children }) => {
 
   const loginAction = async (data) => {
     try {
-      await fetch(`${BASE_URL}/auth/login`, {
+      const res = await fetch(`${BASE_URL}/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(data),
         credentials: 'include',
-      }).then((response) => {
-        if (response.status == 200) {
-          console.log(data);
-          setValidUser(data.name);
-          localStorage.setItem('user', data.name);
-          navigate('/home');
-          return;
-        } else {
-          throw `error with status ${response.status}`;
-        }
       });
+      if (res.ok) {
+        setValidUser(data.name);
+        localStorage.setItem('user', data.name);
+        navigate('/home');
+        return;
+      } else {
+        throw `error with status ${res.status}`;
+      }
     } catch (err) {
       console.error(err);
     }
@@ -42,14 +40,14 @@ const AuthProvider = ({ children }) => {
 
   const logOut = async () => {
     try {
-      const response = await fetch(`${BASE_URL}/auth/logout`, {
+      const res = await fetch(`${BASE_URL}/auth/logout`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         credentials: 'include',
       });
-      console.log(response);
+      console.log(res);
     } catch (err) {
       console.error(err);
     }
