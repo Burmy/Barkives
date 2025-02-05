@@ -7,6 +7,7 @@ import Header from '../components/Header';
 import Logout from '../components/Logout';
 import { styled } from '@mui/system';
 import Pagination from '../components/Pagination';
+import { useSearchParams } from 'react-router-dom';
 
 const FilterContainer = styled('div')({
   display: 'flex',
@@ -72,13 +73,14 @@ const styles = {
 function Home() {
   const { dogs, loading, error, favorites, currentPage, totalPages, toggleFavorite, updateFilters, fetchMatch, goToPage } = FetchData();
 
+  const [searchParams, setSearchParams] = useSearchParams();
   const [breeds, setBreeds] = useState([]);
-  const [selectedBreeds, setSelectedBreeds] = useState([]);
-  const [zipCodes, setZipCodes] = useState('');
+  const [selectedBreeds, setSelectedBreeds] = useState(searchParams.getAll('breeds') || []);
+  const [zipCodes, setZipCodes] = useState(searchParams.get('zipCodes') || "");
   const [ageMin, setAgeMin] = useState('');
   const [ageMax, setAgeMax] = useState('');
   const [range, setRange] = useState([0, 15]);
-  const [sort, setSort] = useState('');
+  const [sort, setSort] = useState(searchParams.get('sort') || '');
 
   //fetch available breeds from API
   useEffect(() => {

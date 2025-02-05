@@ -12,9 +12,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/login" element={<Login />} />
-          {/* <Route element={<PrivateRoute />}> */}
+          <Route element={<PrivateRoute />}>
             <Route path="/home" element={<Home />} />
-          {/* </Route> */}
+          </Route>
           <Route path="*" element={<Landing />} /> {/* Redirect unknown routes */}
         </Routes>
       </AuthProvider>

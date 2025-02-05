@@ -22,10 +22,10 @@ function Landing() {
     >
       <Box sx={{ backgroundColor: '#f4e7d7', padding: ' 0px 20px', marginLeft: '-30px' }}>
         <Typography sx={styles.typoStyle}>Welcome to</Typography>
-        <Typography sx={{ fontSize: '75px', fontFamily: 'Oi' }}>Barkives</Typography>
+        <Typography sx={{ fontSize: '75px', fontFamily: 'Oi' }}>The Barkives</Typography>
         <Typography sx={styles.typoStyle}>Where Every Tail Has a Tale!</Typography>
         <img src={giff}></img>
-        <Typography sx={styles.typoStyle}>Join thousand others to match with your pup today!</Typography>
+        <Typography sx={styles.typoStyle}>Join thousands of others to match with your pup today!</Typography>
         <Button
           href="/login"
           sx={[

@@ -49,7 +49,6 @@ function MatchModal({ dogs, favorites, fetchMatch }) {
           onClick={handleMatch}
         />
       </CustomTooltip>
-
       <Modal
         open={open}
         onClose={handleClose}
@@ -66,7 +65,7 @@ function MatchModal({ dogs, favorites, fetchMatch }) {
             <Card
               sx={{
                 width: '450px',
-                height: '550px',
+                height: '600px',
                 margin: '20px',
                 borderRadius: '25px',
                 border: 'black solid 2px',
@@ -81,7 +80,7 @@ function MatchModal({ dogs, favorites, fetchMatch }) {
                   boxSizing: 'border-box',
                   border: 'white solid 5px',
                   width: '450px',
-                  height: '550px',
+                  height: '600px',
                   borderRadius: '25px',
                   boxShadow: '7px 7px #000000',
                   position: 'absolute',
@@ -92,7 +91,9 @@ function MatchModal({ dogs, favorites, fetchMatch }) {
                 <div style={{ textAlign: 'center' }}>
                   <div style={{ fontWeight: '700', fontSize: '26px' }}>{match.name}</div>
                   {match.breed}, Age: {match.age}, Zip: {match.zip_code}
-                  <div style={{ fontSize: '24px', marginTop: '16px' }}>Contact Today!</div>
+                  <div className="match">
+                    You have a Match <br /> Contact Today!
+                  </div>
                 </div>
               </Card>
             </Card>
