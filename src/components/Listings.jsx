@@ -2,7 +2,7 @@ import { Card, Container } from '@mui/material';
 import React from 'react';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
-function Linstings({ dogs, toggleFavorite, favorites }) {
+function Listings({ dogs, toggleFavorite, favorites }) {
   return (
     <Container
       maxWidth=""
@@ -10,7 +10,8 @@ function Linstings({ dogs, toggleFavorite, favorites }) {
         display: 'flex',
         flexWrap: 'wrap',
         justifyContent: 'center',
-        backgroundColor: '#F4EFE7',
+        backgroundColor: '#f4e7d7',
+        fontFamily: 'Fredoka',
       }}
     >
       {dogs.map((dog) => (
@@ -75,4 +76,4 @@ function Linstings({ dogs, toggleFavorite, favorites }) {
   );
 }
 
-export default Linstings;
+export default Listings;

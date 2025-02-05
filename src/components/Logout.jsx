@@ -7,28 +7,27 @@ import { styled } from '@mui/material/styles';
 const CustomTooltip = styled(({ className, ...props }) => <Tooltip {...props} componentsProps={{ tooltip: { className: className } }} />)(`
   color: white;
   font-size: 24px;
-  font-family:'DM Sans';
+  font-family:"Fredoka";
 `);
 
 function Logout() {
   const auth = useAuth();
   return (
-    <CustomTooltip title="Logout" arrow>
+    <CustomTooltip title="Log Out" arrow>
       <LogoutIcon
         sx={[
-          { transform: 'scale(2)', color: 'black' },
+          { transform: 'scale(1.8)', color: 'black', padding: '10px', marginRight: '-5px' },
           {
             '&:hover': {
-              color: '#878787',
+              color: '#E66D5E',
               cursor: 'pointer',
+              transform: 'scale(2)',
             },
           },
         ]}
         onClick={() => auth.logOut()}
         className="btn-submit"
-      >
-        logout
-      </LogoutIcon>
+      />
     </CustomTooltip>
   );
 }

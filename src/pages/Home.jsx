@@ -1,11 +1,73 @@
 import React, { useEffect, useState } from 'react';
 import FetchData from '../utils/FetchData';
-import Linstings from '../components/Linstings';
+import Listings from '../components/Listings';
 import MatchModal from '../components/MatchModal';
 import { Box, Slider } from '@mui/material';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import Header from '../components/Header';
+import Logout from '../components/Logout';
+import { styled } from '@mui/system';
+import Pagination from '../components/Pagination';
+
+const FilterContainer = styled('div')({
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'center',
+  alignItems: 'center',
+  position: 'sticky',
+  top: '-1px',
+  zIndex: '9',
+  backdropFilter: 'blur(100px)',
+  width: '100%',
+  padding: '25px 0px 30px 0px',
+});
+
+const FilterBtn = styled('div')({
+  width: '100px',
+  height: '76px',
+  border: '2px solid black',
+  backgroundColor: 'white',
+  borderRadius: '25px',
+  boxShadow: '7px 7px #000000',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  margin: '0px 15px',
+});
+
+const FilterRow = styled('div')({
+  padding: '0px 30px',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  border: '2px solid black',
+  backgroundColor: 'white',
+  borderRadius: '25px',
+  boxShadow: '7px 7px #000000',
+  flexWrap: 'wrap',
+  fontFamily: 'Fredoka',
+});
+
+const FilterOption = styled('div')({
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  margin: '10px 0px',
+});
+
+const styles = {
+  inputStyle: {
+    border: '2px solid black',
+    background: 'white',
+    margin: '0px 20px 15px 20px',
+    padding: '10px 20px',
+    fontSize: '18px',
+    borderRadius: '25px',
+    fontFamily: 'Fredoka',
+  },
+  labelStyle: {
+    fontSize: '20px',
+  },
+};
 
 function Home() {
   const { dogs, loading, error, favorites, currentPage, totalPages, toggleFavorite, updateFilters, fetchMatch, goToPage } = FetchData();
@@ -54,161 +116,79 @@ function Home() {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', backgroundColor: '#F4EFE7' }}>
-      <Header></Header>
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'center',
-          alignItems: 'center',
-          position: 'sticky',
-          top: '-1px',
-          zIndex: '9',
-          marginTop: '50px',
-          height: '120px',
-          backdropFilter: 'blur(100px)',
-          width: '100%',
-          paddingBottom: '10px',
-        }}
-      >
-        <div
-          style={{
-            padding: '0px 30px',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            border: '2px solid black',
-            backgroundColor: 'white',
-            borderRadius: '25px',
-            boxShadow: '7px 7px #000000',
-            flexWrap: 'wrap',
-          }}
-        >
-          <label>Breed:</label>
-          <select
-            style={{
-              border: '2px solid black',
-              background: 'white',
-              margin: '15px 20px 15px 20px',
-              padding: '10px 20px',
-              fontSize: '18px',
-              borderRadius: '25px',
-            }}
-            value={selectedBreeds}
-            onChange={(e) => {
-              setSelectedBreeds(e.target.value);
-            }}
-          >
-            {breeds.map((breed) => (
-              <option key={breed} value={breed}>
-                {breed}
-              </option>
-            ))}
-          </select>
-          {/* Zip Code Filter */}
-          <label>Zip Codes:</label>
-          <input
-            type="text"
-            placeholder="Enter zip code"
-            style={{
-              border: '2px solid black',
-              background: 'white',
-              margin: '15px 20px 15px 20px',
-              padding: '10px 20px',
-              fontSize: '18px',
-              borderRadius: '25px',
-            }}
-            onChange={(e) => setZipCodes(e.target.value)}
-          />
-          <label>Age Range:</label>
-          <div style={{ display: 'flex', flexDirection: 'column', marginTop: '-10px' }}>
-            <Slider sx={{ width: '200px', margin: '20px', color: 'black' }} value={range} onChange={handleRangeSlider} max={15} step={1} marks />
-            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', marginTop: '-20px', padding: '0px 14px' }}>
-              <div>{range[0]}</div>
-              <div>{range[1]}</div>
-            </div>
-          </div>
+    <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+      <Header />
 
-          <label>Sort By:</label>
-          <select
-            value={sort}
-            style={{
-              border: '2px solid black',
-              background: 'white',
-              margin: '15px 20px 15px 20px',
-              padding: '10px 20px',
-              fontSize: '18px',
-              borderRadius: '25px',
-            }}
-            onChange={(e) => setSort(e.target.value)}
-          >
-            <option value="breed:asc">Breed (A-Z)</option>
-            <option value="breed:desc">Breed (Z-A)</option>
-            <option value="name:asc">Name (A-Z)</option>
-            <option value="name:desc">Name (Z-A)</option>
-            <option value="age:asc">Age (Youngest First)</option>
-            <option value="age:desc">Age (Oldest First)</option>
-          </select>
-        </div>
-        <div
-          style={{
-            width: '100px',
-            height: '76px',
-            border: '2px solid black',
-            backgroundColor: 'white',
-            borderRadius: '25px',
-            boxShadow: '7px 7px #000000',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            marginLeft: '20px',
-          }}
-        >
+      {/* Filters */}
+      <FilterContainer>
+        <FilterBtn>
           <MatchModal dogs={dogs} favorites={favorites} fetchMatch={fetchMatch} />
-        </div>
-      </div>
+        </FilterBtn>
+
+        <FilterRow>
+          <FilterOption>
+            <label style={styles.labelStyle}>Breed</label>
+            <select
+              style={styles.inputStyle}
+              value={selectedBreeds}
+              onChange={(e) => {
+                setSelectedBreeds(e.target.value);
+              }}
+            >
+              {breeds.map((breed) => (
+                <option key={breed} value={breed}>
+                  {breed}
+                </option>
+              ))}
+            </select>
+          </FilterOption>
+
+          {/* Zip Code Filter */}
+          <FilterOption>
+            <label style={styles.labelStyle}>Zip Codes</label>
+            <input type="text" placeholder="Enter zip code" style={styles.inputStyle} onChange={(e) => setZipCodes(e.target.value)} />
+          </FilterOption>
+
+          {/* Age Range */}
+          <FilterOption>
+            <label style={styles.labelStyle}>Age Range</label>
+            <div style={{ display: 'flex', flexDirection: 'column', marginTop: '-10px' }}>
+              <Slider sx={{ width: '200px', margin: '20px', color: 'black' }} value={range} onChange={handleRangeSlider} max={15} step={1} marks />
+              <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', marginTop: '-20px', padding: '0px 14px' }}>
+                <div>{range[0]}</div>
+                <div>{range[1]}</div>
+              </div>
+            </div>
+          </FilterOption>
+
+          <FilterOption>
+            {/* Zip Code Filter */}
+            <label style={styles.labelStyle}>Sort By</label>
+            <select value={sort} style={styles.inputStyle} onChange={(e) => setSort(e.target.value)}>
+              <option value="breed:asc">Breed (A-Z)</option>
+              <option value="breed:desc">Breed (Z-A)</option>
+              <option value="name:asc">Name (A-Z)</option>
+              <option value="name:desc">Name (Z-A)</option>
+              <option value="age:asc">Age (Youngest First)</option>
+              <option value="age:desc">Age (Oldest First)</option>
+            </select>
+          </FilterOption>
+        </FilterRow>
+
+        <FilterBtn>
+          <Logout />
+        </FilterBtn>
+      </FilterContainer>
 
       {loading && <p>Loading dogs...</p>}
       {error && <p>Error: {error}</p>}
 
       {/* Dog List */}
-      <Linstings dogs={dogs} toggleFavorite={toggleFavorite} favorites={favorites} />
+      <Listings dogs={dogs} toggleFavorite={toggleFavorite} favorites={favorites} />
 
-      <Box sx={{ display: 'flex', marginTop: '50px' }}>
-        {currentPage !== 1 && (
-          <ChevronLeftIcon
-            sx={[
-              { transform: 'scale(2)', color: 'black' },
-              {
-                '&:hover': {
-                  color: '#878787',
-                  cursor: 'pointer',
-                },
-              },
-            ]}
-            onClick={() => goToPage(currentPage - 1)}
-          ></ChevronLeftIcon>
-        )}
-        <Box sx={{ margin: '0 20px', fontSize: '20px', fontWeight: '700' }}>
-          Page {currentPage} of {totalPages}
-        </Box>
-        {currentPage !== totalPages && (
-          <ChevronRightIcon
-            sx={[
-              { transform: 'scale(2)', color: 'black' },
-              {
-                '&:hover': {
-                  color: '#878787',
-                  cursor: 'pointer',
-                },
-              },
-            ]}
-            onClick={() => goToPage(currentPage + 1)}
-          ></ChevronRightIcon>
-        )}
-      </Box>
-    </div>
+      {/* Pagination */}
+      <Pagination currentPage={currentPage} totalPages={totalPages} goToPage={goToPage} />
+    </Box>
   );
 }
 

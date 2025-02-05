@@ -1,16 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Oi&family=Ultra&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
+
+
 body {
   margin: 0;
   padding: 0;
-  font-family: 'DM Sans', serif;
+  font-family: "Funnel Display", serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100vh;
-  background-color: #f4efe7;
+  background-color: #f4e7d7;
+
 }
 .ultra-regular {
-  font-family: 'Ultra', serif;
+  font-family: "Fredoka", serif;
   font-weight: 400;
   font-style: normal;
 }
@@ -25,4 +28,8 @@ body {
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+.bg{
+  background-image: url("./assets/background.png")
 }

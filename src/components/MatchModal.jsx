@@ -7,7 +7,7 @@ import { styled } from '@mui/material/styles';
 const CustomTooltip = styled(({ className, ...props }) => <Tooltip {...props} componentsProps={{ tooltip: { className: className } }} />)(`
     color: white;
     font-size: 24px;
-    font-family:'DM Sans';
+    font-family:"Fredoka";
 `);
 
 function MatchModal({ dogs, favorites, fetchMatch }) {
@@ -85,6 +85,7 @@ function MatchModal({ dogs, favorites, fetchMatch }) {
                   borderRadius: '25px',
                   boxShadow: '7px 7px #000000',
                   position: 'absolute',
+                  fontFamily: 'Fredoka',
                 }}
               >
                 <img src={match.img} alt={match.name} style={{ objectFit: 'cover', width: '450px', height: '435px', borderRadius: '3px' }} />

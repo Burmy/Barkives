@@ -1,16 +1,12 @@
 import { Box, Typography } from '@mui/material';
 import React from 'react';
-import Logout from './Logout';
 
 function Header() {
   return (
-    <Box sx={{ display: 'flex', width: '100%', marginTop:"100px" }}>
-      <Typography fontSize={75} fontFamily={'Oi'} width={'100%'} textAlign={'center'}>
+    <Box className="bg" sx={{ display: 'flex', width: '100%', height: '300px', justifyContent: 'center', alignItems:"center" }}>
+      <Typography fontSize={75} fontFamily={'Oi'} textAlign={'center'} sx={{ width: '700px', backgroundColor: '#f4e7d7' }}>
         Barkives
       </Typography>
-      <Box sx={{ top: '40px', right: '40px', position: 'absolute' }}>
-        <Logout />
-      </Box>
     </Box>
   );
 }
