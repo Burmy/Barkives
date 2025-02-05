@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, HashRouter } from 'react-router-dom';
 import Login from './pages/Login';
 import Home from './pages/Home';
 import Landing from './pages/Landing';
@@ -7,7 +7,7 @@ import PrivateRoute from './utils/PrivateRoute';
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <AuthProvider>
         <Routes>
           <Route path="/" element={<Landing />} />
@@ -18,7 +18,7 @@ function App() {
           <Route path="*" element={<Landing />} /> {/* Redirect unknown routes */}
         </Routes>
       </AuthProvider>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 

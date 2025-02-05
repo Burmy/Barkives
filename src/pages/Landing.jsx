@@ -27,7 +27,7 @@ function Landing() {
         <img src={giff}></img>
         <Typography sx={styles.typoStyle}>Join thousands of others to match with your pup today!</Typography>
         <Button
-          href="/login"
+          href="#/login"
           sx={[
             {
               width: '200px',
