@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/Barkives/static/css/main.314bda75.css",
-    "main.js": "/Barkives/static/js/main.3e2eb189.js",
+    "main.js": "/Barkives/static/js/main.a081ee12.js",
     "static/js/488.11b7d07f.chunk.js": "/Barkives/static/js/488.11b7d07f.chunk.js",
     "static/media/landing.gif": "/Barkives/static/media/landing.cba45bad22e35ec147ee.gif",
     "static/media/background.png": "/Barkives/static/media/background.5dd8d588897743a52fc0.png",
     "index.html": "/Barkives/index.html",
     "main.314bda75.css.map": "/Barkives/static/css/main.314bda75.css.map",
-    "main.3e2eb189.js.map": "/Barkives/static/js/main.3e2eb189.js.map",
+    "main.a081ee12.js.map": "/Barkives/static/js/main.a081ee12.js.map",
     "488.11b7d07f.chunk.js.map": "/Barkives/static/js/488.11b7d07f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.314bda75.css",
-    "static/js/main.3e2eb189.js"
+    "static/js/main.a081ee12.js"
   ]
 }
